@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title><!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<style>
+    .utility-list{
+  list-style-type: none;
+  margin: 0 0 30px 20px;
+  padding: 0;
+  width: 100%;
+    }
+  li{
+    margin: 0 15px 0 0;
+    padding: 0 0 0 22px;
+    display: inline-block;
+    color: $txt-color;
+    font-family: 'Roboto', sans-serif;
+  }
+    .comments{
+      background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1765/icon-chat.svg) no-repeat 0 .1em;
+    }
+    .date{
+      background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1765/icon-calendar.svg) no-repeat 0 .1em;
+    }
+    .card {
+        width: 20%;
+        height: 30%;
+  transition: 0.3s;
+}
+.container {
+  padding: 2px 4px;
+}
+body {margin:0;}
+
+.navbar {
+  overflow: hidden;
+  background-color: rgb(252, 252, 252);
+  position: relative;
+  top: 0;
+  width: 100%;
+}
+
+.navbar a {
+  float: right;
+  display: block;
+  color: #393da7;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background: #393da7;
+  color: rgb(247, 245, 245);
+}
+
+.main {
+  padding: 16px;
+  margin-top: 30px;
+  height: 1500px; 
+}
+.grid { 
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+  align-items: stretch;
+  }
+.grid > article {
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+}
+.grid > article img {
+  max-width: 100%;
+}
+.text {
+  padding: 0 20px 20px;
+}
+.text > button {
+  background: gray;
+  border: 0;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  }
+  .center{
+  text-align:center;}
+</style>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+           <img src="data:image/png;base64,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" 
+           alt="Pens" height="100" width="100">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar justify-content-end">
+              <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" href="#">Features</a>
+              <a class="nav-link" href="#">Pages</a>
+              <a class="nav-link" href="#">Portofolio</a>
+              <a class="nav-link" href="#">Blog</a>
+              <a class="nav-link" href="#">Shop</a>
+              <a class="nav-link" href="#">Shortcodes</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+     
+<main class="grid">
+    <article>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Georg_Janny_Salon_im_Makartstil.jpg" alt="Avatar" height="150" width="200">
+            <h4 class="center">Chamber of art</h4>
+            <div class="utility-info">
+                <ul class="utility-list">
+                  <li class="comments">321</li>
+                  <li class="date">03.12.2015</li>
+                </ul>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur magni impedit sit id voluptates ducimus, nemo, perferendis quos voluptatibus beatae natus molestias nobis in saepe velit? Nesciunt, dolores similique!</p>
+    </article>
+    <article>
+    <img src="https://i0.wp.com/rimbakita.com/wp-content/uploads/2019/05/aurora-borealis.jpg" alt="Toxic" height="150" width="200">
+    <h4 class="center">Toxic Night</h4>
+    <div class="utility-info">
+        <ul class="utility-list">
+          <li class="comments">122</li>
+          <li class="date">07.13.2016</li>
+        </ul>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur magni impedit sit id voluptates ducimus, nemo, perferendis quos voluptatibus beatae natus molestias nobis in saepe velit? Nesciunt, dolores similique!</p>
+    </article>
+    <article>
+    <img src="https://cpb-us-e1.wpmucdn.com/sites.psu.edu/dist/c/123852/files/2021/04/shutterstock_682265785_4.2e16d0ba.fill-1600x775-1-1040x504.jpg" alt="Deep" height="150" width="200">
+    <h4 class="center">Unknown Deep</h4>
+    <div class="utility-info">
+        <ul class="utility-list">
+          <li class="comments">452</li>
+          <li class="date">09.24.2014</li>
+        </ul>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur magni impedit sit id voluptates ducimus, nemo, perferendis quos voluptatibus beatae natus molestias nobis in saepe velit? Nesciunt, dolores similique!</p>
+</article>
+    <article>
+      <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/9757d496-239b-46c5-baea-6873cbfe9b3d/d8qfu34-0704cc6f-c601-4aa0-99d9-534b75c86443.jpg/v1/fill/w_622,h_350,q_70,strp/azure_cradle_by_joeyjazz_d8qfu34-350t.jpg" alt="Space" height="150" width="200">
+      <h4 class="center">Infinite Sky</h4>
+      <div class="utility-info">
+          <ul class="utility-list">
+            <li class="comments">452</li>
+            <li class="date">06.19.2022</li>
+          </ul>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis consequatur magni impedit sit id voluptates ducimus, nemo, perferendis quos voluptatibus beatae natus molestias nobis in saepe velit? Nesciunt, dolores similique!</p>
+    </article>
+  </main>
+</body>
+</html>
